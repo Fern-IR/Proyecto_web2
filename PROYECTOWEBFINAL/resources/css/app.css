@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none !important;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer components {
+    /* ── Botones ── */
+    .btn-primary {
+        @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm text-white
+               bg-gradient-to-r from-accent-500 to-accent-600 shadow-md
+               hover:from-accent-600 hover:to-accent-600 hover:shadow-lg
+               active:scale-[0.98] transition-all duration-200;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm
+               text-travel-700 bg-white border-2 border-travel-200
+               hover:border-travel-400 hover:bg-travel-50
+               active:scale-[0.98] transition-all duration-200;
+    }
+
+    .btn-outline-light {
+        @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm
+               text-white border-2 border-white/70 bg-white/10 backdrop-blur-sm
+               hover:bg-white/20 hover:border-white
+               active:scale-[0.98] transition-all duration-200;
+    }
+
+    /* ── Tarjetas ── */
+    .travel-card {
+        @apply bg-white rounded-2xl border border-slate-100 shadow-card transition-all duration-300;
+    }
+
+    .travel-card:hover {
+        @apply shadow-card-hover -translate-y-1;
+    }
+
+    .benefit-card {
+        @apply bg-white rounded-2xl p-6 border border-travel-100 shadow-card
+               hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300;
+    }
+
+  .package-card-landing {
+        @apply bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-card
+               hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300;
+    }
+
+    /* ── Auth 3D floating card ── */
+    .auth-card-3d {
+        @apply bg-white/95 backdrop-blur-md rounded-2xl border border-white/80 p-8 w-full max-w-md;
+        box-shadow:
+            0 1px 0 rgba(255,255,255,0.9) inset,
+            0 25px 50px -12px rgba(14, 165, 233, 0.2),
+            0 12px 24px rgba(0,0,0,0.06);
+        transform: perspective(1000px) rotateX(0deg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .auth-card-3d:hover {
+        transform: perspective(1000px) rotateX(1deg) translateY(-4px);
+        box-shadow:
+            0 1px 0 rgba(255,255,255,0.9) inset,
+            0 32px 64px -12px rgba(14, 165, 233, 0.25),
+            0 16px 32px rgba(0,0,0,0.08);
+    }
+
+    /* ── Overlays ── */
+    .overlay-hero {
+        background: linear-gradient(
+            105deg,
+            rgba(255, 255, 255, 0.92) 0%,
+            rgba(240, 249, 255, 0.88) 45%,
+            rgba(224, 242, 254, 0.75) 100%
+        );
+    }
+
+    .overlay-auth {
+        background: linear-gradient(
+            135deg,
+            rgba(240, 249, 255, 0.95) 0%,
+            rgba(224, 242, 254, 0.90) 100%
+        );
+    }
+
+    .overlay-cta {
+        background: linear-gradient(
+            135deg,
+            rgba(12, 74, 110, 0.85) 0%,
+            rgba(2, 132, 199, 0.80) 100%
+        );
+    }
+
+    .overlay-panel {
+        background: linear-gradient(180deg, rgba(248,250,252,0.97) 0%, rgba(241,245,249,0.99) 100%);
+    }
+
+    /* ── Panel / Dashboard ── */
+    .stat-card-travel {
+        @apply bg-white rounded-2xl p-6 border border-slate-100 shadow-card transition-all duration-300;
+    }
+
+    .stat-card-travel:hover {
+        @apply shadow-card-hover -translate-y-0.5;
+    }
+
+    .table-travel {
+        @apply bg-white rounded-2xl border border-slate-100 shadow-card overflow-hidden;
+    }
+
+    .nav-header {
+        @apply bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm;
+    }
+
+    /* ── Spinner ── */
+    .spinner {
+        @apply inline-block w-5 h-5 border-2 border-travel-200 border-t-travel-600 rounded-full;
+        animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    /* ── Section badge ── */
+    .section-badge {
+        @apply inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider
+               bg-travel-100 text-travel-700 border border-travel-200;
+    }
+
+    /* ── Logo watermark (auth / fondos) ── */
+    .logo-watermark {
+        @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(85vw,420px)] max-h-[70vh] object-contain opacity-[0.045];
+    }
+
+    .logo-watermark-panel {
+        @apply absolute right-8 bottom-8 w-48 opacity-[0.08] object-contain pointer-events-none select-none;
+    }
+
+    /* ── Auth panel con imagen + marca de agua ── */
+    .auth-visual-panel {
+        @apply hidden lg:flex lg:w-1/2 relative bg-auth-travel bg-cover bg-center overflow-hidden;
+    }
+
+    .auth-visual-panel::before {
+        content: '';
+        @apply absolute inset-0 bg-gradient-to-br from-travel-900/80 via-travel-800/70 to-travel-600/60;
+    }
+
+    .overlay-auth-light {
+        background: linear-gradient(
+            105deg,
+            rgba(255, 255, 255, 0.94) 0%,
+            rgba(240, 249, 255, 0.90) 45%,
+            rgba(250, 248, 245, 0.88) 100%
+        );
+    }
+
+    .auth-form-panel {
+        @apply flex-1 flex flex-col items-center justify-center px-6 py-10 relative overflow-hidden min-h-screen bg-cover bg-center bg-fixed;
+    }
+
+    .input-travel {
+        @apply block w-full rounded-xl border-slate-200 bg-slate-50/50
+               focus:border-travel-400 focus:ring-travel-400 text-slate-800
+               placeholder:text-slate-400 transition;
+    }
+}
